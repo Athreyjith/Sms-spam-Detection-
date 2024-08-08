@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/sms20.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.677);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .table {
+            background: #ffffff; /* Solid white background */
+            color: #000000; /* Black text for better contrast */
+        }
+        .table th, .table td {
+            color: #000000; /* Ensure text color is readable on white background */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback submitted by users:</h2>
+        <h6><p>This is admin page,below are the feedback submitted by user</p></h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feedback in feedbacks %}
+                <tr>
+                    <td><h6>{{ feedback.id }}</h6></td>
+                    <td><h6>{{ feedback.name }}</h6></td>
+                    <td><h6>{{ feedback.email }}</h6></td>
+                    <td><h6>{{ feedback.comments }}</h6></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

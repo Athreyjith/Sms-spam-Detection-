@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sms spam Detector</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 15px/1.5 Arial, Helvetica, sans-serif;
+            background-image: url('/static/sms9.jpg');
+            padding: 0px;
+            background-color: #f4f5e7;
+        }
+
+        .container {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #1f518d ;
+            border-bottom: #448AFF 3px solid;
+            height: 120px;
+            width: 100%;
+            padding-top: 30px;
+        }
+
+        #brandname {
+            text-align: center; /* Center-align the content */
+            margin: 10px;
+        }
+
+        #brandname h1 {
+            font-size: 30px;
+            color: #fff;
+            margin: 0;
+        }
+
+        a {
+            color: red;
+        }
+
+        .night {
+            background: black;
+            color: white;
+        }
+
+        .btn-feedback {
+            background-color: rgb(71, 170, 60);
+        }
+
+        .resultss {
+            border-radius: 15px 50px;
+            background: #ececef;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        .footer {
+            position: fixed;
+            clear: both;
+            background-color: #C1E3E1;
+            text-align: center;
+            font-size: x-large;
+            color: red;
+            bottom: 30px;
+            width: 100%;
+        }
+
+        .red-box {
+            background-color: #3079aa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .red-box h2 {
+            color: white; /* Text color inside the red box */
+            margin-bottom: 0;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #C1E3E1;
+            text-align: center;
+            font-size: x-large;
+            color: red;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div id="brandname">
+            <h1><a href="/"><b>SMS Spam Detector</b></a></h1>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-danger js-go-day">DAY MODE</button>
+            <button class="btn btn-danger js-go-night">NIGHT MODE</button>
+            <button class="btn btn-secondary btn-feedback" onclick="window.location.href='/feedback'">Feedback</button>
+        </div>
+        <div class="col-md-6 text-right">
+            <button class="btn btn-warning btn-article" onclick="window.location.href='/article'">Article and News</button>
+            <button class="btn btn-secondary btn-description" onclick="window.location.href='/description'">Spam Awareness</button>
+        </div>
+    </div>
+
+    <form action="/predict" method="POST">
+        <div class="form-group red-box">
+            <h2>Enter Your Message:</h2>
+            <textarea class="form-control" rows="5" id="comment" name="text" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="footer"> ATME College Of Engineering</div>
+<script>
+    $('.js-go-night').click(function(){
+        $('body').addClass('night');
+        $('div').addClass('night');
+        $('li').addClass('night');
+        $('code').addClass('night');
+    });
+
+    $('.js-go-day').click(function(){
+        $('body').removeClass('night');
+        $('div').removeClass('night');
+        $('li').removeClass('night');
+        $('code').removeClass('night');
+    });
+</script>
+
+</body>
+</html>

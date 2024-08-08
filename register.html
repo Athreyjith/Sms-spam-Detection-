@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/spam16.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure full viewport height coverage */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background color to container */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .tab-content {
+            margin-top: 20px;
+        }
+    
+    </style>
+    
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">User Registration</h2>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#login" role="tab">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#signup" role="tab">Sign Up</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Login Form -->
+        <div class="tab-pane active" id="login" role="tabpanel">
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <h6><label for="loginUsername">Username</label></h6>
+                    <input type="text" class="form-control" id="loginUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <h6><label for="loginPassword">Password</label></h6>
+                    <input type="password" class="form-control" id="loginPassword" name="password" required>
+                </div>
+                <h5><button type="submit" class="btn btn-primary">Login</button></h5>
+            </form>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="tab-pane" id="signup" role="tabpanel">
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <h6><label for="signupUsername">Username</label></h6>
+                    <input type="text" class="form-control" id="signupUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <h6><label for="signupEmail">Email</label></h6>
+                    <input type="email" class="form-control" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <h6><label for="signupPassword">Password</label></h6>
+                    <input type="password" class="form-control" id="signupPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <h6><label for="confirmPassword">Confirm Password</label></h6>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mt-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var password = $('#signupPassword').val();
+            var confirmPassword = $('#confirmPassword').val();
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>
+</body>
+</html>

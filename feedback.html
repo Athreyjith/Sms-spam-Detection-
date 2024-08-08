@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback_form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/sms18.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff; /* Ensures text is visible on dark background */
+        }
+        .container {
+            background: rgba(57, 60, 24, 0.677); /* Adds a semi-transparent background to the form container */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .footer {
+            position: fixed;
+            clear: both;
+            background-color: #C1E3E1;
+            text-align: center;
+            font-size: x-large;
+            color: red;
+            bottom: 30px;
+            width: 100%;
+        }
+        .form-control, .btn-primary {
+            background: rgb(242, 244, 242); /* Makes form inputs slightly transparent */
+            color: #1d0715;
+        }
+        .btn-refresh {
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
+            border: 1px solid #ced4da; /* Gray border */
+        }
+        .btn-refresh:hover {
+            background-color: #1c7ee1; /* Light gray background on hover */
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #C1E3E1;
+            text-align: center;
+            font-size: x-large;
+            color: red;
+            padding: 10px 0;
+        }
+    </style>
+    <script>
+        function showSuccessMessage() {
+            // Display a success message
+            var successMessage = document.getElementById('successMessage');
+            successMessage.innerHTML = '<h3>Your Response send successfully!!</h3>';
+            successMessage.style.display = 'block';
+        }
+
+        function submitFeedback(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate form submission
+            showSuccessMessage();
+        }
+
+        function refreshPage() {
+            window.location.reload(); // Reloads the current page
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Form</h2>
+        <form action="{{ url_for('feedback') }}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments:</label>
+                <textarea class="form-control" id="comments" name="comments" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="alert alert-{{ messages[0][0] }}">
+              {{ messages[0][1] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
