@@ -2,6 +2,12 @@
 
 This project aims to build a machine learning model capable of detecting spam messages in SMS text data. By utilizing natural language processing (NLP) techniques and various classification algorithms, the model can effectively distinguish between spam and legitimate (ham) messages.
 
+
+templates 
+
+keep all html files inside the templates
+
+
 git clone https://github.com/yourusername/sms-spam-detection.git
 
 cd sms-spam-detection
