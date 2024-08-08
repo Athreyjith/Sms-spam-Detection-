@@ -11,7 +11,9 @@ pip install -r requirements.txt
 jupyter notebook
 
 pip install notebook
+
 !pip install numpy pandas scikit-learn
+
 python train_model.py
 
 Navigate to http://localhost:5000 in your web browser.
