@@ -1,6 +1,7 @@
 # SMS-Spam-Detector
 
 git clone https://github.com/yourusername/sms-spam-detection.git
+
 cd sms-spam-detection
 
 Installation
